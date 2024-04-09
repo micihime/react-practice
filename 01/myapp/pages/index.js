@@ -3,11 +3,19 @@
 //don't have to explicitly render virtual DOM to the browser
 
 export default function Home() {
+  function ListItems() {
+    return ( //React fragment
+      <> 
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </>
+    )
+  }
+  
   return (
     <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
+      <ListItems />
     </ul>
   );
 }

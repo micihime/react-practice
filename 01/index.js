@@ -1,9 +1,11 @@
 window.onload = () => {
     const rootElement = document.getElementById("root");
-    const button = document.createElement("button");
-    button.innerHTML = "Click me to get current date and time";
-    button.addEventListener("click", () => {
-        button.innerHTML = new Date().toString();
+    const ints = [1, 2, 3];
+
+    ints.forEach(i => {
+        let li = document.createElement("li");
+        li.innerHTML = i;
+        rootElement.appendChild(li);
     });
-    rootElement.appendChild(button);
+
 }

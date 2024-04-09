@@ -3,7 +3,11 @@
 //don't have to explicitly render virtual DOM to the browser
 
 export default function Home() {
-  return ( //JSX
-    <div>Hello!</div>
+  return (
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
   );
 }

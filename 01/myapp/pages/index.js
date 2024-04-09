@@ -3,8 +3,7 @@
 //don't have to explicitly render virtual DOM to the browser
 
 export default function Home() {
-  function ListItems() {
-    const ints = [1,2,3];
+  function ListItems({ints}) {
     return ( //React fragment
       <> 
         {
@@ -17,10 +16,12 @@ export default function Home() {
       </>
     )
   }
+
+  const ints = [1,2,3];
   
   return (
     <ul>
-      <ListItems />
+      <ListItems ints={ints} />
     </ul>
   );
 }

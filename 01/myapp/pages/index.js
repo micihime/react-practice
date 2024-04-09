@@ -4,13 +4,14 @@
 import {useState} from 'react';
 
 export default function Home() {
-  function ListItems({ints}) {
+  function ListItems({ints, addValue}) {
     return ( //React fragment
       <> 
+        <button onClick={addValue}>Add Item</button>
         {
           ints.map(id => {
             return (
-              <li>{id}</li>
+              <li key={id}>{id}</li>
             )
           })
         }
@@ -20,9 +21,14 @@ export default function Home() {
 
   const [ints, setInts] = useState([1,2,3]);
 
+  function addValue() {
+    const newValue = Math.max(...ints) + 1;
+    setInts([...ints, newValue]);
+  }
+
   return (
     <ul>
-      <ListItems ints={ints} />
+      <ListItems ints={ints} addValue={addValue} />
     </ul>
   );
 }

@@ -14,6 +14,8 @@ class App extends React.Component {
          <div>
             <p>
                My good friend <strong>{this.state.dude}</strong>.
+               <br />
+               I like {this.state.dude}.
             </p>
          </div>
       )

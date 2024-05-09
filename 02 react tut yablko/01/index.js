@@ -4,8 +4,15 @@ class App extends React.Component {
       super(props)
 
       this.state = {
-         dude: 'Marceline the Vampire'
+         dude: 'Princess Bubblegum'
       }
+   }
+
+   handleChange = event => { //arrow functions nevytvaraju vlastny kontext pre this
+      this.setState({
+         dude: event.target.value
+      });
+      //console.log(event.target.value);
    }
 
    //template
@@ -13,8 +20,10 @@ class App extends React.Component {
       return (
          <div>
             <form className="add-new">
-               <input type="text" />
+               <input type="text" value={this.state.dude} onChange={this.handleChange} />
             </form>
+
+            <p className="preview">{this.state.dude}</p>
          </div>
       )
    }

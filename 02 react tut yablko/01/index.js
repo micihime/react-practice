@@ -4,7 +4,21 @@ class App extends React.Component {
       super(props)
 
       this.state = {
-         dude: 'Princess Bubblegum'
+         dude: 'Princess Bubblegum',
+         characters: [
+            {               
+               id: 1,
+               who: "Finn the Human",
+               wat: "A silly kid who wants to become a great hero one day.",
+               cool: 9
+            },
+            {
+               id: 2,
+               who: "Jake the Dog",
+               wat: "Finn's best friend is a wise, old dog with a big heart.",
+               cool: 42
+            }
+         ]
       }
    }
 

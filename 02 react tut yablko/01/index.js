@@ -12,11 +12,9 @@ class App extends React.Component {
    render() {
       return (
          <div>
-            <p>
-               My good friend <strong>{this.state.dude}</strong>.
-               <br />
-               I like {this.state.dude}.
-            </p>
+            <form className="add-new">
+               <input type="text" />
+            </form>
          </div>
       )
    }

@@ -32,7 +32,7 @@ class App extends React.Component {
    //template
    render() {
       const dudes = this.state.characters.map(dude => (
-         <li key={dude.id}>
+         <li className={dude.who.split(' '). length < 3 ? 'strong' : ''} key={dude.id}>
             {dude.who}
 
             {dude.who.split(' ').length < 3 && (

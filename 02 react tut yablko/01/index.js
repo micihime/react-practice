@@ -29,9 +29,8 @@ class App extends React.Component {
       //console.log(event.target.value);
    }
 
-   //template
-   render() {
-      const dudes = this.state.characters.map(dude => (
+   listOfDudes = () => {
+      return this.state.characters.map(dude => (
          <li className={dude.who.split(' '). length < 3 ? 'strong' : ''} key={dude.id}>
             {dude.who}
 
@@ -42,12 +41,13 @@ class App extends React.Component {
             )}
          </li>
       ))
+   }
 
+   //template
+   render() {
       return (
          <div>
-            <ul>
-               {dudes}
-            </ul>
+            <ul>{this.listOfDudes()}</ul>
             
             <form className="add-new">
                <input type="text" value={this.state.dude} onChange={this.handleChange} />

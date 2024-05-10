@@ -14,7 +14,7 @@ class App extends React.Component {
             },
             {
                id: 2,
-               who: "Jake the Dog",
+               who: "JaketheDog",
                wat: "Finn's best friend is a wise, old dog with a big heart.",
                cool: 42
             }
@@ -32,7 +32,15 @@ class App extends React.Component {
    //template
    render() {
       const dudes = this.state.characters.map(dude => (
-         <li key={dude.id}>{dude.who}</li>
+         <li key={dude.id}>
+            {dude.who}
+
+            {dude.who.split(' ').length < 3 && (
+               <small>
+                  <strong> - short name</strong>
+               </small>
+            )}
+         </li>
       ))
 
       return (

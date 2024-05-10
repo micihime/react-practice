@@ -32,7 +32,7 @@ class App extends React.Component {
    //template
    render() {
       const dudes = this.state.characters.map(dude => (
-         <li>{dude.who}</li>
+         <li key={dude.id}>{dude.who}</li>
       ))
 
       return (

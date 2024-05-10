@@ -31,8 +31,16 @@ class App extends React.Component {
 
    //template
    render() {
+      const dudes = this.state.characters.map(dude => (
+         <li>{dude.who}</li>
+      ))
+
       return (
          <div>
+            <ul>
+               {dudes}
+            </ul>
+            
             <form className="add-new">
                <input type="text" value={this.state.dude} onChange={this.handleChange} />
             </form>

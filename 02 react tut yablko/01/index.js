@@ -74,7 +74,16 @@ class App extends React.Component {
                characters: [...this.state.characters, newDude]
             }
          });
+
+         this.resetForm();
       }
+   }
+
+   resetForm = () => {
+      this.setState({
+         newWho: '',
+         newWat: ''
+      });
    }
 
    listOfDudes = () => {

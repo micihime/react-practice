@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './app.css';
 
@@ -89,6 +90,7 @@ class App extends React.Component {
 
   listOfDudes = () => {
      return this.state.characters.map(dude => (
+      <CSSTransition key={dude.id} timeout={200} className="dude">
         <li className="dude" key={dude.id}>
            <a className="ctrl" onClick={() => this.removeDude(dude)}>
               x
@@ -106,6 +108,7 @@ class App extends React.Component {
               value={dude.cool}
               onChange={this.handleCool(dude)}></input>
         </li>
+      </CSSTransition>
      ))
   }
 
@@ -113,7 +116,9 @@ class App extends React.Component {
   render() {
      return (
         <div>
-           <ul>{this.listOfDudes()}</ul>
+          <TransitionGroup component="ul">
+            {this.listOfDudes()}
+          </TransitionGroup>
            
            <form className="add-new" onKeyPress={this.handleSubmit}>
               <input type="text" 

@@ -56,7 +56,11 @@ class App extends React.Component {
    }
 
    handleSubmit = event => {
-      if (event.key === 'Enter') {
+      if (
+         event.key === 'Enter' &&
+         this.state.newWho &&
+         this.state.newWat
+      ) {
          //nesmiem menit state priamo
          this.setState(state => {         
             const newDude = {

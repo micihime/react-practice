@@ -6,8 +6,8 @@ class App extends React.Component {
       this.input = React.createRef() //aby sa po submite formu vzdy kurzor vratil do 1. inputu
 
       this.state = {
-         newWho: 'Princess Bubblegum',
-         newWat: 'A wild rocker girl, yeah!',
+         newWho: '',
+         newWat: '',
          characters: []
       }
    }

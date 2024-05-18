@@ -55,8 +55,10 @@ class App extends React.Component {
 
       //nesmiem menit state priamo
       //console.log([...this.state.characters, newDude]);
-      this.setState({
-         characters: [...this.state.characters, newDude]
+      this.setState(state => {
+         return {
+            characters: [...this.state.characters, newDude]
+         }
       });
       //alert(this.state.dude);
    }

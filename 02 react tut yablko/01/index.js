@@ -46,16 +46,16 @@ class App extends React.Component {
    handleSubmit = event => {
       event.preventDefault(); //zabranit refreshu prehliadaca
       
-      const newDude = {
-         id: 99,
-         who: this.state.dude,
-         wat: "test",
-         cool: 15
-      };
-
       //nesmiem menit state priamo
       //console.log([...this.state.characters, newDude]);
-      this.setState(state => {
+      this.setState(state => {         
+         const newDude = {
+            id: Math.max(...state.characters.map(d => d.id)) + 1,
+            who: this.state.dude,
+            wat: "test",
+            cool: 15
+         };
+
          return {
             characters: [...this.state.characters, newDude]
          }

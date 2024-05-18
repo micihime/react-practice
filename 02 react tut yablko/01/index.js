@@ -8,21 +8,14 @@ class App extends React.Component {
       this.state = {
          newWho: 'Princess Bubblegum',
          newWat: 'A wild rocker girl, yeah!',
-         characters: [
-            {               
-               id: 1,
-               who: "Finn the Human",
-               wat: "A silly kid who wants to become a great hero one day.",
-               cool: 9
-            },
-            {
-               id: 2,
-               who: "JaketheDog",
-               wat: "Finn's best friend is a wise, old dog with a big heart.",
-               cool: 52
-            }
-         ]
+         characters: []
       }
+   }
+
+   componentDidMount = () => {
+      fetch('https://raw.githubusercontent.com/micihime/learning-react/main/02%20react%20tut%20yablko/01/dudes.json')
+         .then(res => res.json())
+         .then(json => this.setState({characters: json}))
    }
 
    handleWho = event => { //arrow functions nevytvaraju vlastny kontext pre this
@@ -39,7 +32,7 @@ class App extends React.Component {
    }
 
    handleCool = dude => event => {
-      const cool = +event.target.value;
+      const cool = +event.target.value; //+ prekonvertuje na int
       this.setState(state => {
          return {
             characters: state.characters.map(item => 

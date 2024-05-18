@@ -43,13 +43,31 @@ class App extends React.Component {
       ))
    }
 
+   handleSubmit = event => {
+      event.preventDefault(); //zabranit refreshu prehliadaca
+      
+      const newDude = {
+         id: 99,
+         who: this.state.dude,
+         wat: "test",
+         cool: 15
+      };
+
+      //nesmiem menit state priamo
+      //console.log([...this.state.characters, newDude]);
+      this.setState({
+         characters: [...this.state.characters, newDude]
+      });
+      //alert(this.state.dude);
+   }
+
    //template
    render() {
       return (
          <div>
             <ul>{this.listOfDudes()}</ul>
             
-            <form className="add-new">
+            <form className="add-new" onSubmit={this.handleSubmit}>
                <input type="text" value={this.state.dude} onChange={this.handleChange} />
             </form>
 

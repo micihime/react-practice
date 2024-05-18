@@ -36,22 +36,15 @@ class App extends React.Component {
       });
    }
 
-   listOfDudes = () => {
-      return this.state.characters.map(dude => (
-         <li className="dude" key={dude.id}>
-            <a className="ctrl">x</a>
-
-            <article className={
-               dude.cool < 10 ? 'faded':
-                  dude.cool > 50 ? 'gold' : ''
-            }>
-               {dude.who}
-               <span>{dude.wat}</span>
-            </article>
-
-            <input className="ctrl" type="number" value={dude.cool}></input>
-         </li>
-      ))
+   handleCool = dude => event => {
+      const cool = event.target.value;
+      this.setState(state => {
+         return {
+            characters: state.characters.map(item => 
+               item === dude ? {...dude, cool} : item
+            )
+         }
+      });
    }
 
    handleSubmit = event => {
@@ -70,6 +63,26 @@ class App extends React.Component {
             }
          });
       }
+   }
+
+   listOfDudes = () => {
+      return this.state.characters.map(dude => (
+         <li className="dude" key={dude.id}>
+            <a className="ctrl">x</a>
+
+            <article className={
+               dude.cool < 10 ? 'faded':
+                  dude.cool > 50 ? 'gold' : ''
+            }>
+               {dude.who}
+               <span>{dude.wat}</span>
+            </article>
+
+            <input className="ctrl" type="number" 
+               value={dude.cool}
+               onChange={this.handleCool(dude)}></input>
+         </li>
+      ))
    }
 
    //template

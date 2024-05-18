@@ -17,7 +17,7 @@ class App extends React.Component {
                id: 2,
                who: "JaketheDog",
                wat: "Finn's best friend is a wise, old dog with a big heart.",
-               cool: 42
+               cool: 52
             }
          ]
       }
@@ -41,7 +41,10 @@ class App extends React.Component {
          <li className="dude" key={dude.id}>
             <a className="ctrl">x</a>
 
-            <article className="">
+            <article className={
+               dude.cool < 10 ? 'faded':
+                  dude.cool > 50 ? 'gold' : ''
+            }>
                {dude.who}
                <span>{dude.wat}</span>
             </article>
@@ -53,7 +56,6 @@ class App extends React.Component {
 
    handleSubmit = event => {
       if (event.key === 'Enter') {
-
          //nesmiem menit state priamo
          this.setState(state => {         
             const newDude = {

@@ -3,6 +3,8 @@ class App extends React.Component {
    constructor(props) {
       super(props)
 
+      this.input = React.createRef() //aby sa po submite formu vzdy kurzor vratil do 1. inputu
+
       this.state = {
          newWho: 'Princess Bubblegum',
          newWat: 'A wild rocker girl, yeah!',
@@ -84,6 +86,8 @@ class App extends React.Component {
          newWho: '',
          newWat: ''
       });
+
+      this.input.current.focus()
    }
 
    listOfDudes = () => {
@@ -115,8 +119,14 @@ class App extends React.Component {
             <ul>{this.listOfDudes()}</ul>
             
             <form className="add-new" onKeyPress={this.handleSubmit}>
-               <input type="text" value={this.state.newWho} onChange={this.handleWho} />
-               <input type="text" value={this.state.newWat} onChange={this.handleWat} />
+               <input type="text" 
+                  autoFocus
+                  ref={this.input}
+                  value={this.state.newWho} 
+                  onChange={this.handleWho} />
+               <input type="text" 
+                  value={this.state.newWat} 
+                  onChange={this.handleWat} />
             </form>
 
             <p className="preview">

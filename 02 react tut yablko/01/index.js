@@ -4,7 +4,8 @@ class App extends React.Component {
       super(props)
 
       this.state = {
-         dude: 'Princess Bubblegum',
+         newWho: 'Princess Bubblegum',
+         newWat: 'A wild rocker girl, yeah!',
          characters: [
             {               
                id: 1,
@@ -22,11 +23,17 @@ class App extends React.Component {
       }
    }
 
-   handleChange = event => { //arrow functions nevytvaraju vlastny kontext pre this
+   handleWho = event => { //arrow functions nevytvaraju vlastny kontext pre this
       this.setState({
-         dude: event.target.value
+         newWho: event.target.value
       });
       //console.log(event.target.value);
+   }
+   
+   handleWat = event => { 
+      this.setState({
+         newWat: event.target.value
+      });
    }
 
    listOfDudes = () => {
@@ -45,23 +52,22 @@ class App extends React.Component {
    }
 
    handleSubmit = event => {
-      event.preventDefault(); //zabranit refreshu prehliadaca
-      
-      //nesmiem menit state priamo
-      //console.log([...this.state.characters, newDude]);
-      this.setState(state => {         
-         const newDude = {
-            id: Math.max(...state.characters.map(d => d.id)) + 1,
-            who: this.state.dude,
-            wat: "test",
-            cool: 15
-         };
+      if (event.key === 'Enter') {
 
-         return {
-            characters: [...this.state.characters, newDude]
-         }
-      });
-      //alert(this.state.dude);
+         //nesmiem menit state priamo
+         this.setState(state => {         
+            const newDude = {
+               id: Math.max(...state.characters.map(d => d.id)) + 1,
+               who: this.state.newWho,
+               wat: this.state.newWat,
+               cool: 15
+            };
+
+            return {
+               characters: [...this.state.characters, newDude]
+            }
+         });
+      }
    }
 
    //template
@@ -70,11 +76,16 @@ class App extends React.Component {
          <div>
             <ul>{this.listOfDudes()}</ul>
             
-            <form className="add-new" onSubmit={this.handleSubmit}>
-               <input type="text" value={this.state.dude} onChange={this.handleChange} />
+            <form className="add-new" onKeyPress={this.handleSubmit}>
+               <input type="text" value={this.state.newWho} onChange={this.handleWho} />
+               <input type="text" value={this.state.newWat} onChange={this.handleWat} />
             </form>
 
-            <p className="preview">{this.state.dude}</p>
+            <p className="preview">
+               {this.state.newWho}
+               <br />
+               <small>{this.state.newWat}</small>
+            </p>
          </div>
       )
    }

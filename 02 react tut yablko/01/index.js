@@ -31,14 +31,15 @@ class App extends React.Component {
 
    listOfDudes = () => {
       return this.state.characters.map(dude => (
-         <li className={dude.who.split(' '). length < 3 ? 'strong' : ''} key={dude.id}>
-            {dude.who}
+         <li className="dude" key={dude.id}>
+            <a className="ctrl">x</a>
 
-            {dude.who.split(' ').length < 3 && (
-               <small>
-                  <strong> - short name</strong>
-               </small>
-            )}
+            <article className="">
+               {dude.who}
+               <span>{dude.wat}</span>
+            </article>
+
+            <input className="ctrl" type="number" value={dude.cool}></input>
          </li>
       ))
    }

@@ -20,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Guy />
     </div>
   );
 }
@@ -31,6 +32,12 @@ function Dude() {
       <p>Test test test.</p>
     </div>
   ) 
+}
+
+class Guy extends React.Component {
+  render() {
+    return <p>Another test.</p>
+  }
 }
 
 export default App;

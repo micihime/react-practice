@@ -10,6 +10,8 @@ function App() {
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
+          <NavLink to="/tunes">Tunes</NavLink>
+          <NavLink to="/about">About</NavLink>
         </nav>
       </header>
       <main>

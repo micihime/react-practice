@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Dude></Dude>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -21,6 +22,15 @@ function App() {
       </header>
     </div>
   );
+}
+
+function Dude() {
+  return (
+    <div>
+      <h1>Dude</h1>
+      <p>Test test test.</p>
+    </div>
+  ) 
 }
 
 export default App;

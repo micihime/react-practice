@@ -8,6 +8,11 @@ import './App.scss';
 //components
 import TheNavigation from './components/TheNavigation'
 
+//views
+import Home from './views/Home'
+import Tunes from './views/Tunes'
+import About from './views/About'
+
 function App() {
   return (
     <div className="App">
@@ -16,9 +21,9 @@ function App() {
       </header>
       <main className='content'>
         <Routes>
-          <Route path="/" element={<h1>Homepage</h1>} />
-          <Route path="/tunes" element={<h1>Tunes</h1>} />
-          <Route path="/about" element={<h1>About</h1>} />
+          <Route path="/" Component={Home} />
+          <Route path="/tunes" Component={Tunes} />
+          <Route path="/about" Component={About} />
         </Routes>
       </main>
       <footer>

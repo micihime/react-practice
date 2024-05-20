@@ -1,18 +1,18 @@
 import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
+//styles & assets
 import logo from './assets/logo.svg';
 import './App.scss';
+
+//components
+import TheNavigation from './components/TheNavigation'
 
 function App() {
   return (
     <div className="App">
       <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/tunes">Tunes</NavLink>
-          <NavLink to="/about">About</NavLink>
-        </nav>
+        <TheNavigation />
       </header>
       <main className='content'>
         <Routes>

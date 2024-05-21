@@ -1,5 +1,8 @@
 import React from 'react'
 
+// styles
+import './Tunes.scss'
+
 const Tunes: React.FC = () => {
     return (
         <div className='tunes'>

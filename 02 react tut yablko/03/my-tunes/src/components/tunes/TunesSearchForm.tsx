@@ -25,11 +25,14 @@ const TunesSearchForm: React.FC = () => {
 
     //template
     return (
-        <p>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={query} onChange={handleInput}/>
-            </form>
-        </p>   
+        <form onSubmit={handleSubmit}>
+            <input 
+                type="text" 
+                value={query} 
+                onChange={handleInput}
+                className="search"
+            />
+        </form>
     )
 }
 

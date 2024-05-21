@@ -21,16 +21,14 @@ const TunesList: React.FC = () => {
             name: 'the best song'
         }
     ])
-    
+
     //template
     return (
-        <p>
-            <ul>
-                {songs.map(song => (
-                    <li key={song.id}>{song.name + ' - ' + song.artist}</li>
-                ))}
-            </ul>
-        </p>   
+        <ul className="tunes-list">
+            {songs.map(song => (
+                <li key={song.id}>{song.name + ' - ' + song.artist}</li>
+            ))}
+        </ul>
     )
 }
 

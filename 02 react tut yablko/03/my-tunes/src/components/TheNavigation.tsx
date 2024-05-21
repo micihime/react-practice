@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 
+//styles
+import './TheNavigation.scss'
+
 interface Props { }
 
 const TheNavigation: React.FC<Props> = () => {

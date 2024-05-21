@@ -9,9 +9,9 @@ interface Props { }
 const TheNavigation: React.FC<Props> = () => {
     return (
         <nav className={styles.navigation}>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/tunes">Tunes</NavLink>
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/" className={({ isActive }) => isActive ? styles.active : ""}>Home</NavLink>
+          <NavLink to="/tunes" className={({ isActive }) => isActive ? styles.active : ""}>Tunes</NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? styles.active : ""}>About</NavLink>
         </nav>
     )
 }

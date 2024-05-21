@@ -6,12 +6,12 @@ import logo from '../assets/logo.svg';
 
 const Home: React.FC = () => {
     const [title, setTitle] = useState('React, wheee!')
-    
+
     return (
         <div className="home">
 			<img className="logo" src={logo} alt="react logo" />
 
-			<h1>{title}</h1>
+			<h1 onClick={() => setTitle('Title clicked!')}>{title}</h1>
 
 			<p>
 				Hot singles in your area. <br />

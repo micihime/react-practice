@@ -31,7 +31,13 @@ const Tunes: React.FC = () => {
         //after submit, the default action is refresh - which I do not want
         e.preventDefault()
 
-        alert(query)
+        const newSong = {
+            id: Math.max(...songs.map(s => s.id)) +1,
+            artist: query,
+            name: query
+        }
+
+        setSongs([...songs, newSong])
     }
 
     //template

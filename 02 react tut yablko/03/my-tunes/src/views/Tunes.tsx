@@ -42,6 +42,12 @@ const Tunes: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <input type="text" value={query} onChange={handleInput}/>
             </form>
+
+            <ul>
+                {songs.map(song => (
+                    <li key={song.id}>{song.name + ' - ' + song.artist}</li>
+                ))}
+            </ul>
         </div>
     )
 }

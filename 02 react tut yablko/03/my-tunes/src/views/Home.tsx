@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
 
 //styles & assets
 import './Home.scss'
@@ -7,13 +7,17 @@ import logo from '../assets/logo.svg';
 const Home: React.FC = () => {
     const [title, setTitle] = useState('React, wheee')
 
+    useEffect(() => {
+
+    })
+
     return (
         <div className="home">
 			<img className="logo" src={logo} alt="react logo" />
 
-			<h1 onClick={() => {
-                setTitle(prevTitle => prevTitle + '!')
-            }}>{title}</h1>
+			<h1 onClick={() => {setTitle(prevTitle => prevTitle + '!')}}>
+                {title}
+            </h1>
 
 			<p>
 				Hot singles in your area. <br />

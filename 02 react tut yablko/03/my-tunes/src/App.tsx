@@ -1,8 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-//styles & assets
-import logo from './assets/logo.svg';
+//styles
 import './App.scss';
 
 //components
@@ -26,9 +25,6 @@ function App() {
           <Route path="/about" Component={About} />
         </Routes>
       </main>
-      <footer>
-        <img src={logo} className='App-logo' alt='logo' />
-      </footer>
     </div>
   );
 }

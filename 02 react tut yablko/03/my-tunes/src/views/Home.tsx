@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     const [title, setTitle] = useState('React, wheee')
 
     useEffect(() => {
-
+        document.title = title
     })
 
     return (

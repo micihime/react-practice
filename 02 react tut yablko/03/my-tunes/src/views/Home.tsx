@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState} from 'react'
 
 //styles & assets
 import './Home.scss'
 import logo from '../assets/logo.svg';
 
 const Home: React.FC = () => {
+    const [title, setTitle] = useState('React, wheee!')
+    
     return (
         <div className="home">
 			<img className="logo" src={logo} alt="react logo" />
 
-			<h1>React, wheee!</h1>
+			<h1>{title}</h1>
 
 			<p>
 				Hot singles in your area. <br />

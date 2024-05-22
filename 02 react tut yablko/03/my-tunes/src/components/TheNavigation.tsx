@@ -6,12 +6,13 @@ import styles from './TheNavigation.module.scss'
 
 interface Props {
   brand?: string
+  howMany: number
  }
 
 const TheNavigation: React.FC<Props> = props => {
     return (
         <nav className={styles.navigation}>
-          <span>this is a {props.brand} navigation</span>
+          <span>this is a {props.brand} navigation {props.howMany}</span>
 
           <NavLink to="/" className={({ isActive }) => isActive ? styles.active : ""}>Home</NavLink>
           <NavLink to="/tunes" className={({ isActive }) => isActive ? styles.active : ""}>Tunes</NavLink>

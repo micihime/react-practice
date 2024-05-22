@@ -13,10 +13,12 @@ import Tunes from './views/Tunes'
 import About from './views/About'
 
 function App() {
+  const a = "example"
+
   return (
     <div className="App">
       <header>
-        <TheNavigation brand="main"/>
+        <TheNavigation brand={a} howMany={1}/>
       </header>
       <main className='content'>
         <Routes>
@@ -26,7 +28,7 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <TheNavigation />
+        <TheNavigation howMany={20-7*3+275}/>
       </footer>
     </div>
   );

@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <TheNavigation />
+        <TheNavigation brand="main"/>
       </header>
       <main className='content'>
         <Routes>
@@ -25,6 +25,9 @@ function App() {
           <Route path="/about" Component={About} />
         </Routes>
       </main>
+      <footer>
+        <TheNavigation brand="secondary"/>
+      </footer>
     </div>
   );
 }

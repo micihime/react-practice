@@ -26,7 +26,7 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <TheNavigation brand="secondary"/>
+        <TheNavigation />
       </footer>
     </div>
   );

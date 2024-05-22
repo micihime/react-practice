@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 import styles from './TheNavigation.module.scss'
 
 interface Props {
-  brand: string
+  brand?: string
  }
 
-const TheNavigation: React.FC<Props> = (props) => {
+const TheNavigation: React.FC<Props> = props => {
     return (
         <nav className={styles.navigation}>
           <span>this is a {props.brand} navigation</span>

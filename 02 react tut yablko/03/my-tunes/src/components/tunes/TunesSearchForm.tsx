@@ -3,9 +3,13 @@ import React, {useState} from 'react'
 // styles
 import './TunesSearchForm.scss'
 
-const TunesSearchForm: React.FC = () => {
+interface Props {
+    onSearchFormSubmit: (data: string) => void
+}
+
+const TunesSearchForm: React.FC<Props> = props => {
      //state
-     const [query, setQuery] = useState('')
+    const [query, setQuery] = useState('')
     
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value)
@@ -14,7 +18,7 @@ const TunesSearchForm: React.FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         //after submit, the default action is refresh - which I do not want
         e.preventDefault()
-
+        props.onSearchFormSubmit(query)
         // const newSong = {
         //     id: Math.max(...songs.map(s => s.id)) +1,
         //     artist: query,

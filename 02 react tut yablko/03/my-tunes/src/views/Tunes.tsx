@@ -9,11 +9,15 @@ import TunesList from '../components/tunes/TunesList'
 
 //component
 const Tunes: React.FC = () => {
+    const handleSearchFormSubmit = (data: string) => {
+        alert(data)
+    }
+
     //template
     return (
         <article className='tunes'>
             <h1>Tunes</h1>
-            <TunesSearchForm />
+            <TunesSearchForm onSearchFormSubmit={handleSearchFormSubmit}/>
             <TunesList />
         </article>
     )

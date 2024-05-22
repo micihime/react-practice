@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <TheNavigation brand={a} howMany={1}/>
+        <TheNavigation />
       </header>
       <main className='content'>
         <Routes>
@@ -27,9 +27,6 @@ function App() {
           <Route path="/about" Component={About} />
         </Routes>
       </main>
-      <footer>
-        <TheNavigation howMany={20-7*3+275}/>
-      </footer>
     </div>
   );
 }

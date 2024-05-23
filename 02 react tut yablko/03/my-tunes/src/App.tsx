@@ -13,8 +13,6 @@ import Tunes from './views/Tunes'
 import About from './views/About'
 
 function App() {
-  const a = "example"
-
   return (
     <div className="App">
       <header>

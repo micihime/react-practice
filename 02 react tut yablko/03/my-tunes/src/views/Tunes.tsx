@@ -15,7 +15,9 @@ const Tunes: React.FC = () => {
 
     const handleSearch = (query: string) => {
         axios.get("https://itunes.apple.com/search?term=" + encodeURI(query) + "&entity=musicTrack&limit=5")
-            .then(response => {console.log(response)})
+            .then(response => {
+                setSongs(response.data.results)
+            })
     }
 
     //template

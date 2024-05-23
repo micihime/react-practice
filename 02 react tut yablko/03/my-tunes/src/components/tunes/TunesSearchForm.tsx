@@ -14,9 +14,9 @@ const TunesSearchForm: React.FC<Props> = props => {
         searchForMusic()
     }
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInput = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
         searchForMusic()
-    }
+    }, 500)
 
     const searchForMusic = () => {
         console.log(searchInput.current?.value)

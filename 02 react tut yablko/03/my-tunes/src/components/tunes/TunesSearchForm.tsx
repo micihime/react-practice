@@ -3,7 +3,9 @@ import React, {useState} from 'react'
 // styles
 import './TunesSearchForm.scss'
 
-interface Props { }
+interface Props { 
+    onSearchFormSubmit: (data: string) => void
+}
 
 const TunesSearchForm: React.FC<Props> = props => {
      //state
@@ -14,15 +16,8 @@ const TunesSearchForm: React.FC<Props> = props => {
      }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        //after submit, the default action is refresh - which I do not want
-        e.preventDefault()
-        
-        // const newSong = {
-        //     id: Math.max(...songs.map(s => s.id)) +1,
-        //     artist: query,
-        //     name: query
-        // }
-        // setSongs([...songs, newSong])
+        e.preventDefault() //after submit, the default action is refresh - which I do not want
+        props.onSearchFormSubmit(query)
     }
 
     //template

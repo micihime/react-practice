@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 
 // styles
 import './TunesList.scss'
+import { Song } from '../../types'
 
 interface Props { 
-    songs: { id: number, artist: string, name: string }[]
+    songs: Song[]
 }
 
 const TunesList: React.FC<Props> = props => {
     const {songs} = props
-    
+
     //template
     return (
         <ul className="tunes-list">

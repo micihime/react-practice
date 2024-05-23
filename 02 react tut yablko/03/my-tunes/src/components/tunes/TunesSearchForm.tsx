@@ -25,6 +25,7 @@ const TunesSearchForm: React.FC<Props> = props => {
     return (
         <form onSubmit={handleSubmit}>
             <input 
+                autoFocus
                 type="text" 
                 ref={searchInput}
                 onChange={handleInput}

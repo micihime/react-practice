@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 
 // styles
 import './Tunes.scss'
@@ -12,15 +13,16 @@ const Tunes: React.FC = () => {
     //state
     const [songs, setSongs] = useState([])
 
-    // const handleSearchFormSubmit = (data: string) => {
-    //     setSongs([])
-    // }
+    const handleSearch = (query: string) => {
+        axios.get("https://itunes.apple.com/search?term=" + encodeURI(query) + "&entity=musicTrack&limit=5")
+            .then(response => {console.log(response)})
+    }
 
     //template
     return (
         <article className='tunes'>
             <h1>Tunes</h1>
-            <TunesSearchForm />
+            <TunesSearchForm onSearch={handleSearch}/>
             <TunesList songs={songs}/>
         </article>
     )

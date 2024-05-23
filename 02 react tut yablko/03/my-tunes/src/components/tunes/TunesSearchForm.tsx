@@ -4,7 +4,9 @@ import {debounce} from 'lodash-es'
 // styles
 import './TunesSearchForm.scss'
 
-interface Props { }
+interface Props { 
+    onSearch: (query: string) => void
+}
 
 const TunesSearchForm: React.FC<Props> = props => {
     const searchInput = useRef<HTMLInputElement>(null) //reference for DOM element - search input
@@ -19,7 +21,9 @@ const TunesSearchForm: React.FC<Props> = props => {
     }, 500)
 
     const searchForMusic = () => {
-        console.log(searchInput.current?.value)
+        let searchString = searchInput.current?.value
+        if (searchString)
+            props.onSearch(searchString);
     }
 
     //template

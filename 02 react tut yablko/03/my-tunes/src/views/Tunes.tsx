@@ -10,12 +10,9 @@ import TunesList from '../components/tunes/TunesList'
 //component
 const Tunes: React.FC = () => {
     //state
-    const [searchQuery, setSearchQuery] = useState('')
-    
     const [songs, setSongs] = useState([])
 
     const handleInputChange = (data: string) => {
-        setSearchQuery(data)
     }
 
     const handleSearchFormSubmit = (data: string) => {

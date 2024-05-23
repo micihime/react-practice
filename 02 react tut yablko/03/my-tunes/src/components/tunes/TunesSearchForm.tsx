@@ -18,8 +18,7 @@ const TunesSearchForm: React.FC<Props> = props => {
     }
 
     const searchForMusic = () => {
-        if(searchInput.current?.value !== null)
-            console.log(searchInput.current?.value)
+        console.log(searchInput.current?.value)
     }
 
     //template

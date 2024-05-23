@@ -5,20 +5,22 @@ import './TunesSearchForm.scss'
 
 interface Props {
     searchQuery: string
-    onInputChange: (data: string) => void
-    onSearchFormSubmit: (data: string) => void
 }
 
 const TunesSearchForm: React.FC<Props> = props => {
     const searchQuery = props.searchQuery
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.onInputChange(e.target.value)
+        searchForMusic()
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault() //after submit, the default action is refresh - which I do not want
-        props.onSearchFormSubmit(searchQuery)
+        e.preventDefault() 
+        searchForMusic()
+    }
+
+    const searchForMusic = () => {
+        console.log("calling itunes")
     }
 
     //template

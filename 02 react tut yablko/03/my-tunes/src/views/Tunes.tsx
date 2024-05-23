@@ -12,9 +12,6 @@ const Tunes: React.FC = () => {
     //state
     const [songs, setSongs] = useState([])
 
-    const handleInputChange = (data: string) => {
-    }
-
     const handleSearchFormSubmit = (data: string) => {
         setSongs([])
     }

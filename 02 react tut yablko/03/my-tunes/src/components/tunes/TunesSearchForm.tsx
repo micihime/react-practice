@@ -1,26 +1,25 @@
-import React, {useState} from 'react'
+import React, {useRef} from 'react'
 
 // styles
 import './TunesSearchForm.scss'
 
-interface Props {
-    searchQuery: string
-}
+interface Props { }
 
 const TunesSearchForm: React.FC<Props> = props => {
-    const searchQuery = props.searchQuery
-
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        searchForMusic()
-    }
-
+    const searchInput = useRef<HTMLInputElement>(null) //reference for DOM element - search input
+    
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault() 
         searchForMusic()
     }
 
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        searchForMusic()
+    }
+
     const searchForMusic = () => {
-        console.log("calling itunes")
+        if(searchInput.current?.value !== null)
+            console.log(searchInput.current?.value)
     }
 
     //template
@@ -28,7 +27,7 @@ const TunesSearchForm: React.FC<Props> = props => {
         <form onSubmit={handleSubmit}>
             <input 
                 type="text" 
-                value={searchQuery} 
+                ref={searchInput}
                 onChange={handleInput}
                 className="search"
             />

@@ -26,7 +26,7 @@ const Tunes: React.FC = () => {
     return (
         <article className='tunes'>
             <h1>Tunes</h1>
-            <TunesSearchForm searchQuery={searchQuery} />
+            <TunesSearchForm />
             <TunesList songs={songs}/>
         </article>
     )

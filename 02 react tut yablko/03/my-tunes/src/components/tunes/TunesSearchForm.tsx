@@ -3,21 +3,22 @@ import React, {useState} from 'react'
 // styles
 import './TunesSearchForm.scss'
 
-interface Props { 
+interface Props {
+    searchQuery: string
+    onInputChange: (data: string) => void
     onSearchFormSubmit: (data: string) => void
 }
 
 const TunesSearchForm: React.FC<Props> = props => {
-     //state
-     const [query, setQuery] = useState('')
-    
-     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-         setQuery(e.target.value)
-     }
+    const searchQuery = props.searchQuery
+
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        props.onInputChange(e.target.value)
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault() //after submit, the default action is refresh - which I do not want
-        props.onSearchFormSubmit(query)
+        props.onSearchFormSubmit(searchQuery)
     }
 
     //template
@@ -25,7 +26,7 @@ const TunesSearchForm: React.FC<Props> = props => {
         <form onSubmit={handleSubmit}>
             <input 
                 type="text" 
-                value={query} 
+                value={searchQuery} 
                 onChange={handleInput}
                 className="search"
             />

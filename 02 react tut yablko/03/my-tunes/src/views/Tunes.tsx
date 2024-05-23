@@ -9,6 +9,9 @@ import TunesList from '../components/tunes/TunesList'
 
 //component
 const Tunes: React.FC = () => {
+    //state
+    const [searchQuery, setSearchQuery] = useState('')
+    
     const [songs, setSongs] = useState([
         {
             id: 1,
@@ -27,6 +30,10 @@ const Tunes: React.FC = () => {
         }
     ])
 
+    const handleInputChange = (data: string) => {
+        setSearchQuery(data)
+    }
+
     const handleSearchFormSubmit = (data: string) => {
         const newSong = {
             id: Math.max(...songs.map(s => s.id)) +1,
@@ -41,7 +48,13 @@ const Tunes: React.FC = () => {
     return (
         <article className='tunes'>
             <h1>Tunes</h1>
-            <TunesSearchForm onSearchFormSubmit={handleSearchFormSubmit}/>
+            
+            <TunesSearchForm 
+                searchQuery={searchQuery} 
+                onInputChange={handleInputChange}
+                onSearchFormSubmit={handleSearchFormSubmit}
+            />
+            
             <TunesList songs={songs}/>
         </article>
     )

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-
+import { Song } from '../types'
 // styles
 import './Tunes.scss'
 
@@ -45,7 +45,7 @@ const Tunes: React.FC = () => {
         trackName: title,
         collectionName: album
     }: SongFromITunes) => {
-        return { id, artist, audioFile, artwork, title, album }
+        return { id, artist, audioFile, artwork, title, album } as Song
     }
 
     //template

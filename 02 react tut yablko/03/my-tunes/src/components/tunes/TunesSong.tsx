@@ -2,20 +2,25 @@ import React from 'react'
 
 //styles
 import './TunesSong.scss'
+import { Song } from '../../types'
 
 //props
-interface Props {}
+interface Props {
+    song: Song
+}
 
 //component
-const TuneSong: React.FC<Props> = () => {
+const TunesSong: React.FC<Props> = (props) => {
+    const {song} = props
+
     //template
     return <article className='song'>
         <div className='inside'>
-            <h2></h2>
+            <h2>{song.artist + ' - ' + song.title}</h2>
             <div className="player"></div>
         </div>
-        <footer className='meta'></footer>
+        <footer className='meta'>{song.album}</footer>
     </article>
 }
 
-export default TuneSong
+export default TunesSong

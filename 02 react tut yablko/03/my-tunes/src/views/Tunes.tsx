@@ -8,6 +8,18 @@ import './Tunes.scss'
 import TunesSearchForm from '../components/tunes/TunesSearchForm'
 import TunesList from '../components/tunes/TunesList'
 
+//data types
+interface SongFromITunes {
+    trackId: number,
+    artistName: string,
+    previewUrl: string,
+    artworkUrl100?: string,
+    trackName: string,
+    collectionName: string,
+    kind?: string
+}
+
+
 //component
 const Tunes: React.FC = () => {
     //state
@@ -17,9 +29,9 @@ const Tunes: React.FC = () => {
         axios.get("https://itunes.apple.com/search?term=" + encodeURI(query) + "&entity=musicTrack&limit=5")
             .then(response => {
                 let itunessongs = response.data.results.filter(
-                    (song: any) => song.kind === 'song'
+                    (song: SongFromITunes) => song.kind === 'song'
                 ).map(
-                    (song: any) => extractData(song)
+                    (song: SongFromITunes) => extractData(song)
                 )
                 setSongs(itunessongs)
             })
@@ -32,7 +44,7 @@ const Tunes: React.FC = () => {
         artworkUrl100: artwork,
         trackName: title,
         collectionName: album
-    }: any) => {
+    }: SongFromITunes) => {
         return { id, artist, audioFile, artwork, title, album }
     }
 

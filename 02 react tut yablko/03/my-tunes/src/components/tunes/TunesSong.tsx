@@ -1,5 +1,8 @@
 import React from 'react'
 
+//styles
+import './TunesSong.scss'
+
 //props
 interface Props {}
 

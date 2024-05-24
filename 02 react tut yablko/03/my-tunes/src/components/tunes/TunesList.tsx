@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { Song } from '../../types'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 // styles
 import './TunesList.scss'
-import { Song } from '../../types'
 
 //children
 import TunesSong from './TunesSong'
@@ -13,17 +13,18 @@ interface Props {
 
 const TunesList: React.FC<Props> = props => {
     const {songs} = props
-    console.log(songs)
 
     //template
     return (
-        <ul className="tunes-list">
+        <TransitionGroup component="ul" className="tunes-list">
             {songs.map(song => (
-                <li key={song.id}>
-                    <TunesSong song={song}/>
-                </li>
+                <CSSTransition key ={song.id} timeout={200} classNames="song">
+                    <li key={song.id}>
+                        <TunesSong song={song}/>
+                    </li>
+                </CSSTransition>                
             ))}
-        </ul>
+        </TransitionGroup>
     )
 }
 

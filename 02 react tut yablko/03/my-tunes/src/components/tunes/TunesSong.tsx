@@ -17,7 +17,12 @@ const TunesSong: React.FC<Props> = (props) => {
     return <article className='song'>
         <div className='inside'>
             <h2>{song.artist + ' - ' + song.title}</h2>
-            <div className="player"></div>
+            <div className="player">
+                {song.artwork && (
+                    <img src={song.artwork} alt="album art"></img>
+                )}
+                <audio controls src={song.audioFile}></audio>
+            </div>
         </div>
         <footer className='meta'>{song.album}</footer>
     </article>

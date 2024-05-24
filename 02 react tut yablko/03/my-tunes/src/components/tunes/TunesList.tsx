@@ -10,12 +10,13 @@ interface Props {
 
 const TunesList: React.FC<Props> = props => {
     const {songs} = props
+    console.log(songs)
 
     //template
     return (
         <ul className="tunes-list">
             {songs.map(song => (
-                <li key={song.id}>{song.trackName + ' - ' + song.artistName}</li>
+                <li key={song.id}>{JSON.stringify(song)}</li>
             ))}
         </ul>
     )

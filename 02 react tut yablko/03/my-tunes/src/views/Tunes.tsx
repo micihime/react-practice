@@ -16,8 +16,24 @@ const Tunes: React.FC = () => {
     const handleSearch = (query: string) => {
         axios.get("https://itunes.apple.com/search?term=" + encodeURI(query) + "&entity=musicTrack&limit=5")
             .then(response => {
-                setSongs(response.data.results)
+                let itunessongs = response.data.results.filter(
+                    (song: any) => song.kind === 'song'
+                ).map(
+                    (song: any) => extractData(song)
+                )
+                setSongs(itunessongs)
             })
+    }
+
+    const extractData = ({
+        trackId: id,
+        artistName: artist,
+        previewUrl: audioFile,
+        artworkUrl100: artwork,
+        trackName: title,
+        collectionName: album
+    }: any) => {
+        return { id, artist, audioFile, artwork, title, album }
     }
 
     //template

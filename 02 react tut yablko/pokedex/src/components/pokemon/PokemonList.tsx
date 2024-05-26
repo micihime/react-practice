@@ -1,14 +1,19 @@
 import React from 'react'
+import Pokemon from './Pokemon'
 
-const PokemonList: React.FC = () => {
+interface Props {
+    pokemons: {id: number, name: string, type: string}[]
+}
+
+const PokemonList: React.FC<Props> = props => {
+    const pokemons = props
     return (
         <ul>
-            <li>Pikachu</li>
-            <li>Bulbasaur</li>
-            <li>Charmander</li>
-            <li>Eevee</li>
-            <li>Ditto</li>
-            <li>Dragonair</li>
+            {pokemons.pokemons.map(pokemon => (
+                <li key={pokemon.id}>
+                    <Pokemon pokemon={pokemon}/>
+                </li>
+            ))}
         </ul>
     )
 }

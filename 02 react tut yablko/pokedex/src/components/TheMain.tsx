@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 //views
 import Home from '../views/Home';
-import Pokemon from '../views/Pokemon';
+import Pokedex from '../views/Pokedex';
 import About from '../views/About';
 
 const TheMain: React.FC = () => {
@@ -11,7 +11,7 @@ const TheMain: React.FC = () => {
         <main>
             <Routes>
               <Route path="/" Component={ Home } />
-              <Route path="/pokemon" Component={ Pokemon } />
+              <Route path="/pokedex" Component={ Pokedex } />
               <Route path="/about" Component={ About } />
             </Routes>
         </main>

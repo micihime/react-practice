@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 import PokemonSearch from '../components/pokemon/PokemonSearch'
 import PokemonList from '../components/pokemon/PokemonList'
 
-const Pokemon: React.FC = () => {
+const Pokedex: React.FC = () => {
     const [pokemons, setPokemons] = useState([
         {
             id: 1,
@@ -33,4 +33,4 @@ const Pokemon: React.FC = () => {
     )
 }
 
-export default Pokemon
+export default Pokedex

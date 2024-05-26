@@ -5,7 +5,7 @@ const TheNavigation: React.FC = () => {
     return (
         <nav>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/pokemon">Pokemon</NavLink>
+            <NavLink to="/pokedex">Pokedex</NavLink>
             <NavLink to="/about">About</NavLink>
         </nav>
     )

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
+import TheNavigation from './components/TheNavigation';
 
 import './App.css';
 
@@ -7,11 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/pokemon">Pokemon</NavLink>
-          <NavLink to="/about">About</NavLink>
-        </nav>
+        <TheNavigation />
       </header>
       <main>
         <Routes>
@@ -19,7 +17,6 @@ function App() {
           <Route path="/pokemon" element={<h1>Pokemon</h1>} />
           <Route path="/about" element={<h1>About</h1>} />
         </Routes>
-        
       </main>
       <footer>
         <p>This is React app for learning purposes, leveraging PokeAPI.</p>

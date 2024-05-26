@@ -1,8 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+//components
 import TheNavigation from './components/TheNavigation';
 import TheFooter from './components/TheFooter';
+
+//views
+import Home from './views/Home';
+import Pokemon from './views/Pokemon';
+import About from './views/About';
 
 import './App.css';
 
@@ -14,9 +20,9 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<h1>Homepage</h1>} />
-          <Route path="/pokemon" element={<h1>Pokemon</h1>} />
-          <Route path="/about" element={<h1>About</h1>} />
+          <Route path="/" Component={ Home } />
+          <Route path="/pokemon" Component={ Pokemon } />
+          <Route path="/about" Component={ About } />
         </Routes>
       </main>
       <footer>

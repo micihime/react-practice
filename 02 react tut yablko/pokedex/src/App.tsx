@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import TheNavigation from './components/TheNavigation';
+import TheFooter from './components/TheFooter';
 
 import './App.css';
 
@@ -19,16 +20,7 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <p>This is React app for learning purposes, leveraging PokeAPI.</p>
-        <a
-          className="App-link"
-          href="https://pokeapi.co/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check out PokeAPI
-        </a>
-        <p>Created by: Miči</p>
+        <TheFooter />
       </footer>
     </div>
   );

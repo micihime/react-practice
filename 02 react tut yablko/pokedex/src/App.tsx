@@ -25,9 +25,7 @@ function App() {
           <Route path="/about" Component={ About } />
         </Routes>
       </main>
-      <footer>
-        <TheFooter />
-      </footer>
+      <TheFooter />
     </div>
   );
 }

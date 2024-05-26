@@ -2,7 +2,7 @@ import React from 'react'
 
 const TheFooter: React.FC = () => {
     return (
-        <div>
+        <footer>
             <p>This is React app for learning purposes, leveraging PokeAPI.</p>
             <a
               className="App-link"
@@ -13,7 +13,7 @@ const TheFooter: React.FC = () => {
               Check out PokeAPI
             </a>
             <p>Created by: Miči</p>
-        </div>
+        </footer>
     )
 }
 

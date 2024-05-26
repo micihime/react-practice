@@ -1,17 +1,18 @@
 import React from 'react'
-import Pokemon from './Pokemon'
+import PokemonItem from './PokemonItem'
+import { Pokemon } from '../../types/types'
 
 interface Props {
-    pokemons: {id: number, name: string, type: string}[]
+    pokemons: Pokemon[]
 }
 
 const PokemonList: React.FC<Props> = props => {
-    const pokemons = props
+    const {pokemons} = props
     return (
         <ul>
-            {pokemons.pokemons.map(pokemon => (
+            {pokemons.map(pokemon => (
                 <li key={pokemon.id}>
-                    <Pokemon pokemon={pokemon}/>
+                    <PokemonItem pokemon={pokemon}/>
                 </li>
             ))}
         </ul>

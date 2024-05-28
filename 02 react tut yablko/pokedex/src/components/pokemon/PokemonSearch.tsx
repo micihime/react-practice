@@ -1,8 +1,27 @@
-import React from 'react'
+import React, {useRef} from 'react'
 
-const PokemonSearch: React.FC = () => {
+interface Props {
+    onSearch: (query: string) => void
+}
+
+const PokemonSearch: React.FC<Props> = props => {
+    const searchInput = useRef<HTMLInputElement>(null) 
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault() 
+        let searchString = searchInput.current?.value
+        if (searchString)
+            props.onSearch(searchString);
+    }
+
     return (
-        <input type='text'/>
+        <form onSubmit={handleSubmit}>
+            <input 
+                autoFocus
+                type="text" 
+                ref={searchInput}
+            />
+        </form>
     )
 }
 

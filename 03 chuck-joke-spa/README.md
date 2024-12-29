@@ -18,3 +18,21 @@ A single-page application (SPA) built with **Next.js**, **Material-UI**, and **R
 - **API**: [Chuck Norris API](https://api.chucknorris.io/)  
 - **Package Manager**: Yarn
 
+## Installation  
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/micihime/chuck-norris-jokes-app.git
+2. Navigate to the project directory:
+   ```bash
+   cd chuck-norris-jokes-app
+3. Install dependencies using Yarn:
+   ```bash
+   yarn install
+4. Start the development server:
+   ```bash
+   yarn dev
+5. Open the app in your browser:
+   ```bash
+   http://localhost:3000
+

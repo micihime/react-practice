@@ -53,3 +53,9 @@ A single-page application (SPA) built with **Next.js**, **Material-UI**, and **R
 - View a Random Joke: Visit the homepage to see a random Chuck Norris joke.
 - Search for a Joke: Use the search bar to find a joke containing a specific string.
 - Filter by Category: Select a category from the dropdown to view a random joke from that category.
+  
+## Testing
+
+This project includes test cases to validate functionality. Run the tests using the following command:
+   ```bash
+  yarn test

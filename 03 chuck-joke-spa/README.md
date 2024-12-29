@@ -1,3 +1,4 @@
-# Chuck Norris Jokes SPA 🤠  
 
-A simple single-page application (SPA) built with React that fetches and displays hilarious Chuck Norris jokes using the Chuck Norris Jokes API.
+## About 
+
+A single-page application (SPA) built with **Next.js**, **Material-UI**, and **Redux**, which displays Chuck Norris jokes fetched from the [Chuck Norris API](https://api.chucknorris.io/). The application allows users to view random jokes, search for jokes, and filter jokes by category.  

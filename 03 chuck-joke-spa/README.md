@@ -36,3 +36,14 @@ A single-page application (SPA) built with **Next.js**, **Material-UI**, and **R
    ```bash
    http://localhost:3000
 
+## Folder Structure
+
+   ```plaintext
+   app/  
+   ├── components/     # Reusable React components  
+   ├── features/       # Redux slices for state management  
+   ├── pages/          # Next.js pages  
+   ├── styles/         # Global and component-specific styles  
+   ├── utils/          # Helper functions and constants  
+   └── tests/          # Test files for components and features
+   ```

@@ -47,3 +47,9 @@ A single-page application (SPA) built with **Next.js**, **Material-UI**, and **R
    ├── utils/          # Helper functions and constants  
    └── tests/          # Test files for components and features
    ```
+
+## Usage
+
+- View a Random Joke: Visit the homepage to see a random Chuck Norris joke.
+- Search for a Joke: Use the search bar to find a joke containing a specific string.
+- Filter by Category: Select a category from the dropdown to view a random joke from that category.

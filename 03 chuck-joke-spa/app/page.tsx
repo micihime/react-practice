@@ -1,8 +1,9 @@
 'use client';
-import styles from "./page.module.css";
+import { Container, Box, Typography, Paper } from '@mui/material';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Joke from "./components/Joke";
+import SearchBar from "./components/SearchBar";
 import { useState } from 'react';
 import { ChuckNorrisJoke } from "./utils/ChuckNorrisJoke";
 
@@ -13,48 +14,54 @@ export default function Home() {
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    setSearchedJokes([]); // Clear searched jokes when category changes
-  };
-
-  const handleSearchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
-    setSearchQuery(query);
-
-    if (query.length >= 3) {
-      const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${query}`);
-      const data = await response.json();
-      setSearchedJokes(data.result);
-    } else {
-      setSearchedJokes([]);
-    }
+    setSearchedJokes([]);
   };
 
   return (
-    <div className={styles.page}>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh'
+    }}>
       <Header onCategorySelect={handleCategorySelect} />
-      <main className={styles.main}>
-        <input
-          type="search"
-          placeholder="Search for a joke"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className={styles.searchBar}
+      <Container component="main" sx={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 3,
+        py: 4
+      }}>
+        <SearchBar
+          onSearchResults={setSearchedJokes}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
         />
+
         {searchQuery.length >= 3 && searchedJokes.length === 0 ? (
-          <div className={styles.noResults}>
-            No jokes found matching "{searchQuery}". Try a different search term!
-          </div>
+          <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
+            <Typography variant="h6" color="text.secondary">
+              No jokes found matching "{searchQuery}". Try a different search term!
+            </Typography>
+          </Paper>
         ) : searchedJokes.length > 0 ? (
-          <div className={styles.searchResults}>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2
+          }}>
             {searchedJokes.map((joke) => (
-              <Joke key={joke.id} category={joke.categories[0] || 'uncategorized'} joke={joke} />
+              <Joke
+                key={joke.id}
+                category={joke.categories[0] || 'uncategorized'}
+                joke={joke}
+              />
             ))}
-          </div>
+          </Box>
         ) : (
           <Joke category={selectedCategory} />
         )}
-      </main>
+      </Container>
       <Footer />
-    </div>
+    </Box>
   );
 }

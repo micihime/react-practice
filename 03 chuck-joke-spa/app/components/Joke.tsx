@@ -1,5 +1,6 @@
-import { Card, CardContent, CardMedia, Typography, Button, Box } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { ChuckNorrisJoke } from "../utils/ChuckNorrisJoke";
+import JokeButton from "./JokeButton";
 
 interface JokeProps {
     category?: string;
@@ -34,14 +35,7 @@ export default function Joke({ category, joke, onNewJoke }: JokeProps) {
                 </Card>
             )}
             <Box sx={{ textAlign: 'center', mt: 2 }}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={onNewJoke}
-                    sx={{ mt: 2 }}
-                >
-                    Get New Joke
-                </Button>
+                <JokeButton onNewJoke={onNewJoke} />
             </Box>
         </Box>
     );

@@ -37,6 +37,25 @@ export default function Home() {
     setSearchedJokes([]);
   };
 
+  const handleSearch = async (query: string) => {
+    setSearchQuery(query);
+
+    if (query.length >= 3) {
+      const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${query}`);
+      const data = await response.json();
+      setSearchedJokes(data.result);
+
+      if (data.result && data.result.length > 0) {
+        setCurrentJoke(data.result[0]);
+      } else {
+        setCurrentJoke(null);
+      }
+    } else {
+      setSearchedJokes([]);
+      setCurrentJoke(null);
+    }
+  };
+
   return (
     <Box sx={{
       display: 'flex',
@@ -56,11 +75,10 @@ export default function Home() {
         py: 4
       }}>
         <SearchBar
-          onSearchResults={setSearchedJokes}
           searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          setCurrentJoke={setCurrentJoke}
+          onSearch={handleSearch}
         />
+
         {searchQuery.length >= 3 && searchedJokes.length === 0 ? (
           <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
             <Typography variant="h6" color="text.secondary">

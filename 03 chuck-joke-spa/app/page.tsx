@@ -4,13 +4,20 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Joke from "./components/Joke";
 import SearchBar from "./components/SearchBar";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChuckNorrisJoke } from "./utils/ChuckNorrisJoke";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('random');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchedJokes, setSearchedJokes] = useState<ChuckNorrisJoke[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch('https://api.chucknorris.io/jokes/categories')
+      .then(response => response.json())
+      .then(data => setCategories(data));
+  }, []);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
@@ -23,7 +30,11 @@ export default function Home() {
       flexDirection: 'column',
       minHeight: '100vh'
     }}>
-      <Header onCategorySelect={handleCategorySelect} />
+      <Header 
+        onCategorySelect={handleCategorySelect} 
+        categories={categories}
+        activeCategory={selectedCategory}
+      />
       <Container component="main" sx={{
         flex: 1,
         display: 'flex',

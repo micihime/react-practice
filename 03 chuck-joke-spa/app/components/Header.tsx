@@ -1,23 +1,14 @@
 'use client';
-import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Button, Box, Container } from '@mui/material';
 
 interface HeaderProps {
     onCategorySelect: (category: string) => void;
+    categories: string[];
+    activeCategory: string;
 }
 
-export default function Header({ onCategorySelect }: HeaderProps) {
-    const [categories, setCategories] = useState<string[]>([]);
-    const [activeCategory, setActiveCategory] = useState('random');
-
-    useEffect(() => {
-        fetch('https://api.chucknorris.io/jokes/categories')
-            .then(response => response.json())
-            .then(data => setCategories(data));
-    }, []);
-
+export default function Header({ onCategorySelect, categories, activeCategory }: HeaderProps) {
     const handleCategoryClick = (category: string) => {
-        setActiveCategory(category);
         onCategorySelect(category);
     };
 
@@ -28,8 +19,8 @@ export default function Header({ onCategorySelect }: HeaderProps) {
                     <Box sx={{
                         display: 'flex',
                         gap: 2,
-                        flexWrap: 'wrap', // This will wrap buttons to next line
-                        justifyContent: 'center' // This centers the buttons
+                        flexWrap: 'wrap',
+                        justifyContent: 'center'
                     }}>
                         <Button
                             color="inherit"

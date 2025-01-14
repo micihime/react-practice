@@ -12,6 +12,19 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchedJokes, setSearchedJokes] = useState<ChuckNorrisJoke[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
+  const [currentJoke, setCurrentJoke] = useState<ChuckNorrisJoke | null>(null);
+
+  const fetchJoke = async () => {
+    const baseUrl = "https://api.chucknorris.io/jokes/random";
+    const url = selectedCategory !== "random" ? `${baseUrl}?category=${selectedCategory}` : baseUrl;
+    const response = await fetch(url);
+    const data: ChuckNorrisJoke = await response.json();
+    setCurrentJoke(data);
+  };
+
+  useEffect(() => {
+    fetchJoke();
+  }, [selectedCategory]);
 
   useEffect(() => {
     fetch('https://api.chucknorris.io/jokes/categories')
@@ -30,8 +43,8 @@ export default function Home() {
       flexDirection: 'column',
       minHeight: '100vh'
     }}>
-      <Header 
-        onCategorySelect={handleCategorySelect} 
+      <Header
+        onCategorySelect={handleCategorySelect}
         categories={categories}
         activeCategory={selectedCategory}
       />
@@ -46,8 +59,8 @@ export default function Home() {
           onSearchResults={setSearchedJokes}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          setCurrentJoke={setCurrentJoke}
         />
-
         {searchQuery.length >= 3 && searchedJokes.length === 0 ? (
           <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
             <Typography variant="h6" color="text.secondary">
@@ -60,16 +73,14 @@ export default function Home() {
             flexDirection: 'column',
             gap: 2
           }}>
-            {searchedJokes.map((joke) => (
-              <Joke
-                key={joke.id}
-                category={joke.categories[0] || 'uncategorized'}
-                joke={joke}
-              />
-            ))}
+            <Joke category={searchedJokes[0].categories[0] || 'uncategorized'}
+              joke={searchedJokes[0]}
+              onNewJoke={fetchJoke} />
           </Box>
         ) : (
-          <Joke category={selectedCategory} />
+          <Joke category={selectedCategory}
+            joke={currentJoke}
+            onNewJoke={fetchJoke} />
         )}
       </Container>
       <Footer />

@@ -1,29 +1,13 @@
-import { useState, useEffect } from "react";
 import { Card, CardContent, CardMedia, Typography, Button, Box } from "@mui/material";
 import { ChuckNorrisJoke } from "../utils/ChuckNorrisJoke";
 
 interface JokeProps {
     category?: string;
-    joke?: ChuckNorrisJoke;
+    joke: ChuckNorrisJoke | null;
+    onNewJoke: () => void;
 }
 
-export default function Joke({ category, joke: inputJoke }: JokeProps) {
-    const [joke, setJoke] = useState<ChuckNorrisJoke | null>(inputJoke || null);
-
-    const fetchJoke = async () => {
-        const baseUrl = "https://api.chucknorris.io/jokes/random";
-        const url = category && category !== "random" ? `${baseUrl}?category=${category}` : baseUrl;
-        const response = await fetch(url);
-        const data: ChuckNorrisJoke = await response.json();
-        setJoke(data);
-    };
-
-    useEffect(() => {
-        if (!inputJoke) {
-            fetchJoke();
-        }
-    }, [category, inputJoke]);
-
+export default function Joke({ category, joke, onNewJoke }: JokeProps) {
     return (
         <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
             {joke && (
@@ -49,18 +33,16 @@ export default function Joke({ category, joke: inputJoke }: JokeProps) {
                     </CardContent>
                 </Card>
             )}
-            {!inputJoke && (
-                <Box sx={{ textAlign: 'center', mt: 2 }}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={fetchJoke}
-                        sx={{ mt: 2 }}
-                    >
-                        Get New Joke
-                    </Button>
-                </Box>
-            )}
+            <Box sx={{ textAlign: 'center', mt: 2 }}>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={onNewJoke}
+                    sx={{ mt: 2 }}
+                >
+                    Get New Joke
+                </Button>
+            </Box>
         </Box>
     );
 }

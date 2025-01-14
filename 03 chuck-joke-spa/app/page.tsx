@@ -6,6 +6,7 @@ import Joke from "./components/Joke";
 import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from 'react';
 import { ChuckNorrisJoke } from "./utils/ChuckNorrisJoke";
+import { jokeService } from './services/jokeService';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('random');
@@ -15,10 +16,7 @@ export default function Home() {
   const [currentJoke, setCurrentJoke] = useState<ChuckNorrisJoke | null>(null);
 
   const fetchJoke = async () => {
-    const baseUrl = "https://api.chucknorris.io/jokes/random";
-    const url = selectedCategory !== "random" ? `${baseUrl}?category=${selectedCategory}` : baseUrl;
-    const response = await fetch(url);
-    const data: ChuckNorrisJoke = await response.json();
+    const data = await jokeService.getRandomJoke(selectedCategory);
     setCurrentJoke(data);
   };
 
@@ -27,8 +25,7 @@ export default function Home() {
   }, [selectedCategory]);
 
   useEffect(() => {
-    fetch('https://api.chucknorris.io/jokes/categories')
-      .then(response => response.json())
+    jokeService.getCategories()
       .then(data => setCategories(data));
   }, []);
 
@@ -41,12 +38,11 @@ export default function Home() {
     setSearchQuery(query);
 
     if (query.length >= 3) {
-      const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${query}`);
-      const data = await response.json();
-      setSearchedJokes(data.result);
+      const result = await jokeService.searchJokes(query);
+      setSearchedJokes(result);
 
-      if (data.result && data.result.length > 0) {
-        setCurrentJoke(data.result[0]);
+      if (result && result.length > 0) {
+        setCurrentJoke(result[0]);
       } else {
         setCurrentJoke(null);
       }

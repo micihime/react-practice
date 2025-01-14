@@ -1,7 +1,7 @@
 import { Box, Link, Stack, Typography } from '@mui/material';
-import FileIcon from '@mui/icons-material/InsertDriveFile';
-import WindowIcon from '@mui/icons-material/Window';
-import LanguageIcon from '@mui/icons-material/Language';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import CodeIcon from '@mui/icons-material/Code';
 
 export default function Footer() {
     return (
@@ -23,7 +23,7 @@ export default function Footer() {
                 alignItems="center"
             >
                 <Link
-                    href="https://nextjs.org/learn"
+                    href="https://www.linkedin.com/in/miroslava-hre%C5%A1kov%C3%A1-bbb5939a/"
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
@@ -37,12 +37,31 @@ export default function Footer() {
                         }
                     }}
                 >
-                    <FileIcon sx={{ fontSize: 20 }} />
-                    <Typography>Learn</Typography>
+                    <LinkedInIcon sx={{ fontSize: 20 }} />
+                    <Typography>My LinkedIn profile</Typography>
+                </Link>
+                
+                <Link
+                    href="https://github.com/micihime"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1,
+                        textDecoration: 'none',
+                        color: 'text.primary',
+                        '&:hover': {
+                            color: 'primary.main'
+                        }
+                    }}
+                >
+                    <GitHubIcon sx={{ fontSize: 20 }} />
+                    <Typography>My GitHub profile</Typography>
                 </Link>
 
                 <Link
-                    href="https://vercel.com/templates?framework=next.js"
+                    href="https://github.com/micihime/chuck-joke-spa"
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
@@ -56,27 +75,8 @@ export default function Footer() {
                         }
                     }}
                 >
-                    <WindowIcon sx={{ fontSize: 20 }} />
-                    <Typography>Examples</Typography>
-                </Link>
-
-                <Link
-                    href="https://nextjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 1,
-                        textDecoration: 'none',
-                        color: 'text.primary',
-                        '&:hover': {
-                            color: 'primary.main'
-                        }
-                    }}
-                >
-                    <LanguageIcon sx={{ fontSize: 20 }} />
-                    <Typography>Go to nextjs.org →</Typography>
+                    <CodeIcon sx={{ fontSize: 20 }} />
+                    <Typography>Source Code for this app</Typography>
                 </Link>
             </Stack>
         </Box>

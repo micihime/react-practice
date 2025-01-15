@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Joke from "./components/Joke";
 import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from 'react';
-import { ChuckNorrisJoke } from "./utils/ChuckNorrisJoke";
+import { ChuckNorrisJoke } from "./types/ChuckNorrisJoke";
 import { jokeService } from './services/jokeService';
 
 export default function Home() {

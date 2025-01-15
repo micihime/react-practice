@@ -1,4 +1,4 @@
-import { ChuckNorrisJoke } from '../utils/ChuckNorrisJoke';
+import { ChuckNorrisJoke } from '../types/ChuckNorrisJoke';
 
 const BASE_URL = 'https://api.chucknorris.io/jokes';
 

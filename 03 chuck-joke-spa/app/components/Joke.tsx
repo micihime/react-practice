@@ -1,5 +1,5 @@
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
-import { ChuckNorrisJoke } from "../utils/ChuckNorrisJoke";
+import { ChuckNorrisJoke } from "../types/ChuckNorrisJoke";
 import JokeButton from "./JokeButton";
 
 interface JokeProps {

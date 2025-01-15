@@ -52,6 +52,38 @@ export default function Home() {
     }
   };
 
+  const renderJokeContent = () => {
+    if (searchQuery.length >= 3 && searchedJokes.length === 0) {
+      return (
+        <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
+          <Typography variant="h6" color="text.secondary">
+            No jokes found matching "{searchQuery}". Try a different search term!
+          </Typography>
+        </Paper>
+      );
+    }
+
+    if (searchedJokes.length > 0) {
+      return (
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Joke
+            category={searchedJokes[0].categories[0] || 'uncategorized'}
+            joke={searchedJokes[0]}
+            onNewJoke={fetchJoke}
+          />
+        </Box>
+      );
+    }
+
+    return (
+      <Joke
+        category={selectedCategory}
+        joke={currentJoke}
+        onNewJoke={fetchJoke}
+      />
+    );
+  };
+
   return (
     <Box sx={{
       display: 'flex',
@@ -75,27 +107,7 @@ export default function Home() {
           onSearch={handleSearch}
         />
 
-        {searchQuery.length >= 3 && searchedJokes.length === 0 ? (
-          <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-            <Typography variant="h6" color="text.secondary">
-              No jokes found matching "{searchQuery}". Try a different search term!
-            </Typography>
-          </Paper>
-        ) : searchedJokes.length > 0 ? (
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2
-          }}>
-            <Joke category={searchedJokes[0].categories[0] || 'uncategorized'}
-              joke={searchedJokes[0]}
-              onNewJoke={fetchJoke} />
-          </Box>
-        ) : (
-          <Joke category={selectedCategory}
-            joke={currentJoke}
-            onNewJoke={fetchJoke} />
-        )}
+        {renderJokeContent()}
       </Container>
       <Footer />
     </Box>

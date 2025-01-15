@@ -12,7 +12,6 @@ import JokeButton from './components/JokeButton';
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('random');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [searchedJokes, setSearchedJokes] = useState<ChuckNorrisJoke[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [currentJoke, setCurrentJoke] = useState<ChuckNorrisJoke | null>(null);
 
@@ -32,7 +31,6 @@ export default function Home() {
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    setSearchedJokes([]);
   };
 
   const handleSearch = async (query: string) => {
@@ -40,7 +38,6 @@ export default function Home() {
 
     if (query.length >= 3) {
       const result = await jokeService.searchJokes(query);
-      setSearchedJokes(result);
 
       if (result && result.length > 0) {
         setCurrentJoke(result[0]);
@@ -48,30 +45,18 @@ export default function Home() {
         setCurrentJoke(null);
       }
     } else {
-      setSearchedJokes([]);
       setCurrentJoke(null);
     }
   };
 
   const renderJokeContent = () => {
-    if (searchQuery.length >= 3 && searchedJokes.length === 0) {
+    if (currentJoke === null) {
       return (
         <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
           <Typography variant="h6" color="text.secondary">
             No jokes found matching "{searchQuery}". Try a different search term!
           </Typography>
         </Paper>
-      );
-    }
-
-    if (searchedJokes.length > 0) {
-      return (
-        <>
-          <Joke joke={searchedJokes[0]} />
-          <Box sx={{ textAlign: 'center', mt: 2 }}>
-            <JokeButton onNewJoke={fetchJoke} />
-          </Box>
-        </>
       );
     }
 

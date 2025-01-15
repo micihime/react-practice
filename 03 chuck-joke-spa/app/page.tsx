@@ -7,6 +7,7 @@ import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from 'react';
 import { ChuckNorrisJoke } from "./types/ChuckNorrisJoke";
 import { jokeService } from './services/jokeService';
+import JokeButton from './components/JokeButton';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('random');
@@ -65,22 +66,22 @@ export default function Home() {
 
     if (searchedJokes.length > 0) {
       return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Joke
-            category={searchedJokes[0].categories[0] || 'uncategorized'}
-            joke={searchedJokes[0]}
-            onNewJoke={fetchJoke}
-          />
-        </Box>
+        <>
+          <Joke joke={searchedJokes[0]} />
+          <Box sx={{ textAlign: 'center', mt: 2 }}>
+            <JokeButton onNewJoke={fetchJoke} />
+          </Box>
+        </>
       );
     }
 
     return (
-      <Joke
-        category={selectedCategory}
-        joke={currentJoke}
-        onNewJoke={fetchJoke}
-      />
+      <>
+        <Joke joke={currentJoke} />
+        <Box sx={{ textAlign: 'center', mt: 2 }}>
+          <JokeButton onNewJoke={fetchJoke} />
+        </Box>
+      </>
     );
   };
 

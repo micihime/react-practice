@@ -1,14 +1,11 @@
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { ChuckNorrisJoke } from "../types/ChuckNorrisJoke";
-import JokeButton from "./JokeButton";
 
 interface JokeProps {
-    category?: string;
     joke: ChuckNorrisJoke | null;
-    onNewJoke: () => void;
 }
 
-export default function Joke({ category, joke, onNewJoke }: JokeProps) {
+export default function Joke({ joke }: JokeProps) {
     return (
         <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
             {joke && (
@@ -34,9 +31,6 @@ export default function Joke({ category, joke, onNewJoke }: JokeProps) {
                     </CardContent>
                 </Card>
             )}
-            <Box sx={{ textAlign: 'center', mt: 2 }}>
-                <JokeButton onNewJoke={onNewJoke} />
-            </Box>
         </Box>
     );
 }

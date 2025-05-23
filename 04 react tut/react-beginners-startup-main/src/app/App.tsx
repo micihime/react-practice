@@ -20,7 +20,7 @@ export function App() {
 // }
 
 // 4) arrow function + implicit return
-// export const X = () => <h1 className="greeting">Hello</h1>;
+// export const App = () => <h1 className="greeting">Hello</h1>;
 
 // 5) arrow function + implicit return
 // With JSX
